@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg-base text-text-primary antialiased selection:bg-brand-primary selection:text-white;
+  }
+}
+
+@layer utilities {
+  .paper-texture {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .vignette-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+    background: radial-gradient(ellipse at center, transparent 60%, rgba(214,206,189,0.15) 100%);
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(181, 138, 46, 0.15);
+  }
+}
+
+@keyframes scrollLine {
+  0%   { top: 0%;    height: 0%;   opacity: 1; }
+  50%  { top: 0%;    height: 60%;  opacity: 1; }
+  100% { top: 100%;  height: 0%;   opacity: 0; }
+}
