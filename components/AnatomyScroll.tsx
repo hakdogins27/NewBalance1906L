@@ -52,8 +52,8 @@ const SEQUENCES_CONFIG: FrameSequence[] = [
   {
     name: 'Outersole',
     folder: 'outersole',
-    startFrame: 4,   // skip first 3 frames
-    count: 351,      // 376 - 3 (start) - 22 (end) = 351
+    startFrame: 4,
+    count: 351,
     appearAt: 0.75,
     chapter: '03',
     label: 'Traction',
@@ -94,7 +94,7 @@ export default function AnatomyScroll() {
       for (let i = seq.startFrame; i < seq.startFrame + seq.count; i++) {
         const currentIdx = globalIdx
         const img = new Image()
-        img.src = `/assets/frames/${seq.folder}/${i.toString().padStart(4, '0')}.jpg`
+        img.src = `/assets/frames/${seq.folder}/${i.toString().padStart(4, '0')}.webp`
         img.onload = () => {
           tempFrames[currentIdx] = img
           count++
@@ -293,6 +293,7 @@ export default function AnatomyScroll() {
       ref={containerRef}
       className="relative w-full bg-black"
       style={{ height: '1000vh' }}
+      onContextMenu={(e) => e.preventDefault()}
     >
       <div className="sticky top-0 w-full h-screen overflow-hidden">
         {/* Canvas */}
